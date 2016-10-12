@@ -67,4 +67,9 @@ function($scope, $stateParams, postFactory){
   $scope.incrementUpvotes = function(comment){
     comment.upvotes += 1;
   };
-}]);
+}])
+.controller('AppCtrl', [
+  function AppCtrl($scope) {
+   // $scope.currentNavItem = 'page1';
+  }
+  ]);
