@@ -54,6 +54,7 @@ function($scope, $stateParams, foodFactory){
     if($scope.formContent === '') { return; }
     $scope.food.push({
       title: $scope.formContent,
+      image: $scope.image,
       upvotes: 0,
       comments: [
       ]
@@ -85,6 +86,7 @@ function($scope, $stateParams, moreFoodFactory){
     if($scope.formContent === '') { return; }
     $scope.moreFood.push({
       title: $scope.formContent,
+      image: $scope.image,
       upvotes: 0,
       comments: [
       ]

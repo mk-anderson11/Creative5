@@ -61,12 +61,14 @@
 
     <form ng-submit="addMoreFood()" style = "margin-top30px;">
     <input type="text" ng-model="formContent"></input>
+    <input type="text" ng-model="image"></input>
     <button type="submit">Food!</button>
   </form>
 
   <div ng-repeat="foo in moreFood | orderBy: '-upvotes'">
     <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(foo)"></span>
     {{foo.title}} - upvotes: {{foo.upvotes}}
+    <img src='{{foo.image}}'>
   </div>
     
 
@@ -81,12 +83,14 @@
 
     <form ng-submit="addFood()" style = "margin-top30px;">
     <input type="text" ng-model="formContent"></input>
+    <input type="text" ng-model="image"></input>
     <button type="submit">Food!</button>
   </form>
 
   <div ng-repeat="foo in food | orderBy: '-upvotes'">
     <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(foo)"></span>
     {{foo.title}} - upvotes: {{foo.upvotes}}
+    <img src='{{foo.image}}'>
   </div>
 
   </script>
