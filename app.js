@@ -60,6 +60,7 @@ function($scope, $stateParams, foodFactory){
       ]
     });
     $scope.formContent = '';
+    $scope.image = '';
   };
 
   $scope.addComment = function(){
@@ -92,6 +93,7 @@ function($scope, $stateParams, moreFoodFactory){
       ]
     });
     $scope.formContent = '';
+    $scope.image = '';
   };
 
   $scope.addComment = function(){
