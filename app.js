@@ -23,23 +23,36 @@ function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('home');
 }]) 
-.factory('postFactory', [function(){
+.factory('foodFactory', [function(){
   var o = {
-    posts: []
+    food: []
+  };
+  return o;
+}])
+.factory('moreFoodFactory', [function(){
+  var o = {
+    moreFood: []
   };
   return o;
 }])
 .controller('MainCtrl', [
 '$scope',
-'postFactory',
-function($scope, postFactory){
+function($scope){
   $scope.test = 'Hello world!';
+}])
+.controller('FoodCtrl', [
+'$scope',
+'$stateParams',
+'foodFactory',
+function($scope, $stateParams, foodFactory){
+  $scope.food = foodFactory.food;
+  console.log("i'm here")
+  console.log("The food scope: " + $scope.food)
+  console.log(foodFactory.food)
 
-  $scope.posts = postFactory.posts;
-
-  $scope.addPost = function(){
+  $scope.addFood = function(){
     if($scope.formContent === '') { return; }
-    $scope.posts.push({
+    $scope.food.push({
       title: $scope.formContent,
       upvotes: 0,
       comments: [
@@ -48,21 +61,9 @@ function($scope, postFactory){
     $scope.formContent = '';
   };
 
-  $scope.incrementUpvotes = function(post) {
-    post.upvotes += 1;
-  };
-
-}])
-.controller('MoreFoodCtrl', [
-'$scope',
-'$stateParams',
-'postFactory',
-function($scope, $stateParams, postFactory){
-  $scope.post = postFactory.posts[$stateParams.id];
-  
   $scope.addComment = function(){
     if($scope.body === '') { return; }
-    $scope.post.comments.push({
+    $scope.food.comments.push({
       body: $scope.body,
       upvotes: 0
     });
@@ -73,8 +74,34 @@ function($scope, $stateParams, postFactory){
     comment.upvotes += 1;
   };
 }])
-.controller('FoodCtrl', [
-  function foodCtrl($scope) {
-   // $scope.currentNavItem = 'page1';
-  }
-]);
+.controller('MoreFoodCtrl', [
+'$scope',
+'$stateParams',
+'moreFoodFactory',
+function($scope, $stateParams, moreFoodFactory){
+  $scope.moreFood = moreFoodFactory.moreFood;
+
+  $scope.addMoreFood = function(){
+    if($scope.formContent === '') { return; }
+    $scope.moreFood.push({
+      title: $scope.formContent,
+      upvotes: 0,
+      comments: [
+      ]
+    });
+    $scope.formContent = '';
+  };
+
+  $scope.addComment = function(){
+    if($scope.body === '') { return; }
+    $scope.moreFood.comments.push({
+      body: $scope.body,
+      upvotes: 0
+    });
+    $scope.body = '';
+  };
+
+  $scope.incrementUpvotes = function(comment){
+    comment.upvotes += 1;
+  };
+}]);
