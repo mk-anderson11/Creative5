@@ -26,11 +26,15 @@
 </head>
 <body ng-app="News">
 
-<div id="navbar">
-  <a href="index.html#/home"><span>Home</span></a>
-  <a href="index.html#/food"><span>Food</span></a>
-  <a href="index.html#/moreFood"><span>More Food</span></a>
-<div>
+<div class="navbar navbar-deafult">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+  <li class="active"><a class="nb-item" href="index.html#/home">Home</a></li>
+  <li><a class="nb-item" href="index.html#/food">Food</a></li>
+  <li><a class="nb-item" href="index.html#/moreFood">More Food</a></li>
+</ul>
+</div>
+</div>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <ui-view></ui-view>
