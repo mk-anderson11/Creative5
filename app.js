@@ -10,10 +10,15 @@ function($stateProvider, $urlRouterProvider) {
       templateUrl: '/home.html',
       controller: 'MainCtrl'
     })
-    .state('posts', {
-      url: '/posts/{id}',
-      templateUrl: '/posts.html',
-      controller: 'PostsCtrl'
+    .state('food', {
+      url: '/food',
+      templateUrl: '/food.html',
+      controller: 'FoodCtrl'
+    })
+    .state('moreFood', {
+      url: '/moreFood',
+      templateUrl: '/moreFood.html',
+      controller: 'MoreFoodCtrl'
     });
 
   $urlRouterProvider.otherwise('home');
@@ -48,7 +53,7 @@ function($scope, postFactory){
   };
 
 }])
-.controller('PostsCtrl', [
+.controller('MoreFoodCtrl', [
 '$scope',
 '$stateParams',
 'postFactory',
@@ -68,8 +73,8 @@ function($scope, $stateParams, postFactory){
     comment.upvotes += 1;
   };
 }])
-.controller('AppCtrl', [
-  function AppCtrl($scope) {
+.controller('FoodCtrl', [
+  function foodCtrl($scope) {
    // $scope.currentNavItem = 'page1';
   }
-  ]);
+]);

@@ -26,23 +26,11 @@
 </head>
 <body ng-app="News">
 
-<div ng-controller="AppCtrl" ng-cloak>
-  <md-content class="md-padding">
-    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-      <md-nav-item md-nav-click="goto('page1')" name="page1">Page One</md-nav-item>
-      <md-nav-item md-nav-click="goto('page2')" name="page2">Page Two</md-nav-item>
-      <md-nav-item md-nav-click="goto('page3')" name="page3">Page Three</md-nav-item>
-      <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo-->
-      <md-nav-item md-nav-sref="app.page4" name="page4">Page Four</md-nav-item>
-      <md-nav-item md-nav-href="#page5" name="page5">Page Five</md-nav-item>
-      
-    </md-nav-bar>
-    <div class="ext-content">
-      External content for `<span>{{currentNavItem}}</span>`
-    </div>
-  </md-content>
-
-
+<div id="navbar">
+  <a href="index.html#/home"><span>Home</span></a>
+  <a href="index.html#/food"><span>Food</span></a>
+  <a href="index.html#/moreFood"><span>More Food</span></a>
+<div>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <ui-view></ui-view>
@@ -51,64 +39,30 @@
 
   <script type="text/ng-template" id="/home.html">
     <div class="page-header">
-      <h1>News</h1>
+      <h1>Home</h1>
     </div>
 
-    <form ng-submit="addPost()"
-      style="margin-top:30px;">
-      <h3>Add a new post</h3>
-
-      <div class="form-group">
-        <input type="text"
-        class="form-control"
-        placeholder="Title"
-        ng-model="formContent"></input>
-      </div>
-      <button type="submit" class="btn btn-primary">Post</button>
-    </form>
-
-    <div ng-repeat="post in posts | orderBy:'-upvotes'">
-      <span class="glyphicon glyphicon-thumbs-up"
-        ng-click="incrementUpvotes(post)"></span>
-      {{post.upvotes}}
-      <span style="font-size:20px; margin-left:10px;">
-          {{post.title}}
-      </span>
-      <span>
-        <a href="#/posts/{{posts.indexOf(post)}}">Comments</a>
-      </span>
-    </div>
+    <p>Welcome to this site. We will show food.</p>
 
   </script>
 
-  <script type="text/ng-template" id="/posts.html">
+  <script type="text/ng-template" id="/moreFood.html">
     <div class="page-header">
       <h3>
-          {{post.title}}
+          More Food
       </h3>
     </div>
 
-    <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-      <span class="glyphicon glyphicon-thumbs-up"
-        ng-click="incrementUpvotes(comment)"></span>
-      {{comment.upvotes}} 
-      <span style="font-size:20px; margin-left:10px;">
-        {{comment.body}}
-      </span>
+    <p>On this page we will see more food</p>
+
+  </script>
+
+  <script type="text/ng-template" id="/food.html">
+    <div class="page-header">
+      <h2>Food!</h2>
     </div>
-    <form ng-submit="addComment()"
-      style="margin-top:30px;">
-      <h3>Add a new comment</h3>
 
-      <div class="form-group">
-        <input type="text"
-        class="form-control"
-        placeholder="Comment"
-        ng-model="body"></input>
-      </div>
-      <button type="submit" class="btn btn-primary">Post</button>
-    </form>
-
+    <p>This is to make sure that this works</p>
   </script>
 </body>
 </html>
